@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>nyadb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+</body>
+<p>
+NYADB的表现和机器的核心数相关, 下面是分别在核心数为8, 4, 1的机器上的表现.<br>
+其中TestInsertSingleXXX表示以单线程执行XXX次insert操作的耗时.<br>
+TestInsertXXXWithYYY表示以YYY个线程并发执行XXX次insert操作的耗时.<br>
+</p>
+
+<p>
+机器1:<br>
+cpu MHz		: 2397.115<br>
+cache size	: 20480 KB<br>
+cpu cores   : 8<br>
+<img src="./p8.png"/>
+</p>
+
+<p>
+机器2:<br>
+cpu 		        : 2.7 GHz Intel Core i5<br>
+physical cpu cores  : 2<br>
+logical cpu cores   : 4<br>
+<img src="./p4.png"/>
+</p>
+
+<p>
+机器3:<br>
+cpu MHz		: 2600.066<br>
+cache size	: 20480 KB<br>
+cpu cores   : 1<br>
+<img src="./p1.png"/>
+</p>
+
+</body>
+
+</html>

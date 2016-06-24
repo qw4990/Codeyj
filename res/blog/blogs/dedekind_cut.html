@@ -1,0 +1,255 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+<p style="line-height:1.5">
+本文描述怎么通过"Dedekind Cut"来构造实数.
+</p>
+
+<p style="line-height:1.5">
+首先给出"Dedekind Cut"的定义.<br>
+<font color="red">"定义1 - DedekindCut": 将全体有理数拆分为两个集合A, A', 并满足 1)任一有理数, 必在且仅在A或A'二者之一中出现,
+2)A内的任一有理数a, 必小于A'内的任一有理数a'. 将这种拆分写作(A|A'), 并将其定义为DedekindCut,
+并称A为其下组, A'为其上组.</font><br>
+PS: DedekindCut依赖了集合论, 关于集合论的基础知识, 本文就不补充了.
+</p>
+
+<p style="line-height:1.5">
+本文最后, 一个DedekindCut, 就对应着一个实数.<br>
+不过现在我们先不管DedekindCut和实数之间的联系, 先想办法丰富DedekindCut, 并令其成为一套系统.<br>
+</p>
+
+<p style="line-height:1.5">
+<font color="red">"定义2 - DedekindCut的相等": 对于任意的两组DedekindCut, (A|A')和(B|B'), 如果A和B两个集合相等,
+则(A|A')等于(B|B'), 写作"(A|A') = (B|B')"</font>.
+</p>
+
+<p style="line-height:1.5">
+<font color="red">"定义3 - DedekindCut的大于": 对于任意的两组DedekindCut, (A|A')和(B|B'), 如果A包含了集合B,
+则(A|A')大于(B|B'), 写作"(A|A') &gt; (B|B')"</font>.
+</p>
+
+<p style="line-height:1.5">
+<font color="red">"定义4 - DedekindCut的小于": 对于任意的两组DedekindCut, (A|A')和(B|B'), 如果
+"(A|A') = (B|B')"和"(A|A') &gt; (B|B')"都不成立, 则(A|A')小于(B|B'), 写作"(A|A') &lt; (B|B')"</font>.
+</p>
+
+<p style="line-height:1.5">
+定义2, 3, 4, 定义出了DedekindCut上的序, 下面证明这个序是全序, 因为定义2, 3, 4将使DedekindCut满足:<br>
+<font color="blue">"性质5 - DedekindCut是全序": 对于任意的DedekindCut, (A|A')和(B|B')必有且仅有下面三种关系之一,
+1) "(A|A') = (B|B')", 2)"(A|A') &gt; (B|B')", 3)"(A|A') &lt; (B|B')".<br></font>
+"证明": 对于A和B两个集合, 必有且仅有下面三种关系之一, 1)A和B相等, 2)A包含B, 3)B包含A,
+于是, 根据这三种情况, (A|A')和(B|B')将必有且仅有上面的三种关系之一.
+</p>
+
+<p style="line-height:1.5">
+DedekindCut的序除了全序性, 还满足传递性, 就如同有理数中的序一样:<br>
+<font color="blue">"性质6 - DedekindCut序的大于传递性": 对于任意的DedekindCut, (A|A')和(B|B')和(C|C'), 如果有
+"(A|A') &gt; (B|B')"和"(B|B') &gt; (C|C')", 那么一定有"(A|A') &gt; (C|C')"</font>.<br>
+"证明": 根据条件, 可得A包含B, B包含C, 那么一定有A包含C, 则根据定义, 有"(A|A') &gt; (C|C')".
+</p>
+
+<p style="line-height:1.5">
+模仿"性质6", 你还能定义出"小于传递性", "等于传递性".<br>
+总之, 有理数系统中所有关于序的性质, 根据定义2, 3, 4, 在DedekindCut上, 也能满足.
+</p>
+
+<p style="line-height:1.5">
+接下来, 我们定义DedekindCut上的运算符, 出于简便, 这里只定义"加法"运算, 其他的运算,
+可以按照和"加法"类似的定义方法导出.<br>
+<font color="red">"定义7 - DedekindCut上的加法": 对于任意的两个DedekindCut, (A|A')和(B|B'),
+存在这么一个DedekindCut, (C|C'), 满足对于A', B'和C内的任意元素a, b, c, 有"c &lt; a + b";
+我们将(C|C')称作(A|A')和(B|B')的和, 写作"(C|C') = (A|A') + (B|B')"</font>.<br>
+PS: "定义7"中, 使用了"存在"这样的词汇, 或许有些不妥, 但是下面的"性质8"将会证明"存在"是正确的.
+</p>
+
+<p style="line-height:1.5">
+<font color="blue">"性质8 - DedekindCut加法和的存在性": 对于任意的两个DedekindCut, (A|A')和(B|B'), 其和一定存在</font>.<br>
+"证明": 先构建两个有理数集合C和C';<br>
+其中C满足, 对于C, A', B'内任意元素c, a, b, 有"c &lt; a + b", C包含一切这样的有理数c;<br>
+接着将一切不属于C的有理数, 划分到C'中, 于是一切有理数, 必在且在C或者C'二者之一中;<br>
+现在我们用反证法证明C'内所有元素都大于C;<br>
+假设C'内存在某个元素c', 小于C中某个元素c;<br>
+根据集合C的性质, A'和B'中存在某个a和b, 有"c &lt; a + b";<br>
+由于"c' &lt; c", 根据有理数序的传递性, 有"c' &lt; a + b";<br>
+根据集合C的性质, c'应该被包含与C中, 而不应该在C'中, 这与假设矛盾;<br>
+于是, C'内所有元素大于C, 所以, 利用C和C', 一定能构成某个DedekindCut, (C|C');<br>
+因此, (A|A')和(B|B')的和必存在.
+</p>
+
+<p style="line-height:1.5">
+同"序"一样, 我们现在来检测DedekindCut上的"加法"能否满足有理数系统上"加法"的性质, 先看下面这条:<br>
+<font color="blue">"性质9 - DedekindCut加法的唯一性": 对于任意的两个DedekindCut, (A|A')和(B|B'), 其和是唯一的</font>.<br>
+"证明": 用反证法, 如果存在两个不同的DedekindCut, (C|C')和(D|D'), 他们同时等于"(A|A') + (B|B')";<br>
+由于(C|C')和(D|D')不同, 则一定存在某个有理数x, 有x在C中但不在D中;(或在D中不在C中, 如果是这样, 则交换一下二者符号)<br>
+如果x在C中, 根据定义7, 存在某a和b, 使得"x &lt; a + b";<br>
+因为"x &lt; a + b"和"(D|D') = (A|A') + (B|B')", 根据定义7, x应该在D中;<br>
+这与假设矛盾, 因此不可能同时存在两个不同的DedekindCut等于"(A|A') + (B|B')".
+</p>
+
+<p style="line-height:1.5">
+作为例子, 再来验证一下DedekindCut"加法"的交换性:<br>
+<font color="blue">"性质10 - DedekindCut加法的交换性": 对于任意的两个DedekindCut, (A|A')和(B|B'), 有
+"(A|A') + (B|B') = (B|B') + (A|A')"</font>.<br>
+"证明": 设(C|C') = (A|A') + (B|B'), (D|D') = (B|B') + (A|A'), 然后用反证法;<br>
+假设(C|C')和(D|D')不同, 则一定存在某个有理数x, 有x在C中但不在D中;(或在D中不在C中, 如果是这样, 则交换一下二者符号)<br>
+如果x在C中, 根据定义7, 存在某a和b, 使得"x &lt; a + b";<br>
+由于有理数系统的加法具有交换性, 因此有"x &lt; b + a";<br>
+因为"x &lt; b + a"和"(D|D') = (B|B') + (A|A')", 根据定义7, x应该在D中;<br>
+这与假设矛盾, 因此(C|C')和(D|D')相同.
+</p>
+
+<p style="line-height:1.5">
+总之, 有理数系统中的所有运算符, 都可以在DedekindCut上定义出来;<br>
+有理数系统中所有运算符的所有性质, DedekindCut也都可以满足;<br>
+这里不会过多的进行赘述了.<br>
+我们将DedekindCut本身, 连同定义在上的运算, 它具有的性质, 称之为DedekindCut系统;<br>
+下面, 将会描述DedekindCut系统比有理数系统更加强大的地方.
+</p>
+
+<p style="line-height:1.5">
+首先, 作为例子, 来看看DedekindCut怎么表示"根号2".<br>
+异常的简单, 由于"根号2"本身不在有理数系统中, 于是, 构建有理数集合A, A包含所有这样的有理数a, 满足"a * a &lt; 2";<br>
+接着将所有不在A中的有理数, 划分为集合A', 则A和A'能够构造一个DedekindCut, (A|A'), 它表示了"根号2".
+</p>
+
+<p style="line-height:1.5">
+再来看个例子, DedekindCut怎么表示"1".<br>
+构建有理数集合B, B中所有元素b, 满足"b &lt;= 1", B包含所有满足此条件的有理数;<br>
+接着将所有不在B中的有理数, 划分为集合B', 则B和B'能够构造一个DedekindCut, (B|B'), 它表示了"1".<br>
+从这个例子可以看出, 所有的有理数, 都可以用DedekindCut来表示.<br>
+DedekindCut系统, 将能完全包含有理数系统.
+</p>
+
+<p style="line-height:1.5">
+再来比较DedekindCut表示下, "根号2"和"1"的大小.<br>
+很简单, 由于"1.1"在(A|A')被划分到了A, 在(B|B')被划分到了B', 因此"根号2"大于"1".<br>
+注意, 在有理数系统中, 比较"根号2"和"1"的大小是不可能的, 但是在DedekindCut系统中, 则可以进行比较了.<br>
+同理, 你也能对"根号2"进行四则运算, 不多赘述了.
+</p>
+
+<p style="line-height:1.5">
+有理数系统中, 数与数之间实际上是存在"缝隙"的, 有理数系统不能表示这些缝隙, 如"根号2";<br>
+而DedekindCut利用"极限", 能够表示出这些所谓的"缝隙".<br>
+仔细观察DedekindCut对于"根号2"的分割(A|A'), 你会发现A中没有最大有理数, A'中没有最小有理数(见证明11);<br>
+你可以想象成有某种"计算过程", 不断的向A和A'中添加有理数, 这些有理数将越来越靠近"根号2", 但是却没有尽头, 这就是"极限"的体现;<br>
+而这整个"计算过程", 则能够用于表示"根号2".<br>
+而对于"1"这种有理数系统也能表示的"量", 你会发现如果用DedekindCut来表示"1", "1"本身要么出现在这个
+DedekindCut的上组, 作为最小有理数, 要么出现在下组, 作为最大有理数.<br>
+仔细揣摩二者的差异, 会发现, DedekindCut利用极限, 表达了比有理数系统更多的东西, "根号2"就是其中之一.<br>
+</p>
+
+<p style="line-height:1.5">
+"证明11": 先证明A中无最大有理数, 利用反证法;<br>
+假设A中有最大有理数a, 有"a^2 &lt; 2";<br>
+设定另一个有理数, e, 且"0 &lt; e &lt; 1";<br>
+那么(a+e)^2 = a^2+2e+e^2 < a^2+3e;<br>
+令a^2+3e &lt; 2, 推导出e &lt; (2-a^2)/3;<br>
+于是只要e满足上述条件, 则存在一个更大的有理数(a+e), 有(a+e)^2 &lt; 2;<br>
+这与假设矛盾, 因此A中无最大有理数a;<br>
+A'中无最小有理数同理可证.<br>
+注意, 上述的所有计算过程, 都是在有理数系统内进行的.
+</p>
+
+<p style="line-height:1.5">
+总的来说, 我们可以说DedekindCut系统, 比有理数系统, 更加"稠密", 它能表示更多的东西.<br>
+那么, 我们能否再次在DedekindCut系统本身上, 使用"极限", 得到某个更加稠密的系统呢?<br>
+如果真能这样, 那么不断的利用这一方法, 则可以一直得到更加稠密的系统?<br>
+幸运的是, 这样的情况不会发生.<br>
+也就是说, 除了加减乘除, 对于"极限"操作, DedekindCut系统也是完备的.<br>
+接下来将证明DedekindCut系统的完备性.
+</p>
+
+<p style="line-height:1.5">
+由于之后的证明可能会用到, 这里单独说一下有理数和DedekindCut之间的大小比较.<br>
+对于任一有理数a和DedekindCut, (A|A'), 分下面三种情况:<br>
+1) a为A中最大元素或者a为A'中最小元素, 则定义a和(A|A')相等;<br>
+2) 如果a在A中且不是最大元素, 则a小于(A|A');<br>
+3) 否则a大于(A|A');<br>
+可以发现, 之前用DedekindCut来表示有理数"1", 和1)情况符合.
+</p>
+
+<p style="line-height:1.5">
+<font color="blue">"规定12 - DedekindCut与有理数相容规则": 如果某个DedekindCut, 上组有最小元素, 则将该最小元素从上组中抽离, 划分到下组, 成为下组最大元素</font>.<br>
+"规定12"使得, 当用DedekindCut来表示有理数系统也能表示的量时, 如"1", 统一的将该元素划分到下组;<br>
+从而避免出现两个不同的DedekindCut, 实际上对应着同一个"量";<br>
+</p>
+
+<p style="line-height:1.5">
+<font color="blue">"性质13 - DedekindCut之间的有理数稠密性": 两个不同的DedekindCut之间, 存在着无数的有理数</font>.<br>
+"证明": 利用反证法, 对于任意的两个DedekindCut, (A|A'), (B|B');<br>
+假设存在某个b属于B但不属于A(或属于A不属于B, 则交换A和B符号);<br>
+那么根据DedekindCut的定义, B包含A, B中存在b, b大于所有A中元素a, 接下来分两种情况;<br>
+1)如果A中有最大元素a, 那么根据"性质11", a和b之间, 存在无数个有理数, 这些有理数大于(A|A'), 小于(B|B'), 证毕;<br>
+2)如果没有, 由于DedekindCut的性质和"规定12", b存在于A'中, 且不是A'中最小的元素, 则A'存在某个元素a'小于b, a'和b之间, 存在无数个有理数, 这些有理数大于(A|A'), 小于(B|B'), 证毕;<br>
+</p>
+
+<p style="line-height:1.5">
+接下来分析一下DedekindCut系统是怎么样表示比有理数系统更多的元素的.<br>
+有理数系统中, 任意存在的元素a, 通过DedekindCut系统表示, a是(A|A')是下组最大元素(规定12);<br>
+有理数系统中, 不存在的元素, DedekindCut系统表示为(A|A')后, 上组无最小, 下组无最大, 如"根号2";<br>
+于是, <font color="red">我们之后的证明思路如下</font>:<br>
+1) 在DedekindCut系统上, 采用类似于DedekindCut构造的方法, 尝试构造出更高阶的DedekindCut, 设其为DedekindCut_High;<br>
+2) 在DedekindCut_High这个系统中, 不会出现"上组无最小, 下组无最大"这种情况, 即DedekindCut_High系统只能表示DedekindCut系统已经存在的元素.<br>
+这样, 就能说明DedekindCut_High并不比DedekindCut稠密, 也就没必要在DedekindCut系统上更进一步的进行"极限"了.<br>
+</p>
+
+<p>下面进行完备性证明.</p>
+
+<p style="line-height:1.5">
+首先模仿DedekindCut, 定义出DedekindCut_High;<br>
+对DedekindCut系统进行分割, 以构建DedekindCut_High;(之前是对有理数分割, 以构建DedekindCut)<br>
+<font color="red">"定义14 - DedekindCut_High": 将全体DedekindCut拆分为两个集合X, X', 并满足 1)任一DedekindCut, 必在且仅在X或X'二者之一中出现,
+2)X内的仍一DedekindCut, 必小于X'内的任一DedekindCut. 将这种拆分写作(X||X'), 并将其定义为DedekindCut_High,
+并称X为其下组, X'为其上组</font>.<br>
+</p>
+
+<p style="line-height:1.5">
+<font color="red">接下来证明任一的DedekindCut_High, 不可能"上组无最小, 下组无最大", 并将下面证明过程称为"证明15"</font>.<br>
+对于任一的DedekindCut_High, (X||X'), 因为X和X'包含了所有的DedekindCut, 而有理数系统又相容于DedekindCut系统;<br>
+所以X和X'中包含了所有的有理数, 于是我们将X和X'中的有理数分别划分到两个集合A和A';<font color="blue">[1]</font><br>
+且根据DedekindCut_High的定义, 有A中任一有理数都小于A'中任一有理数, 于是A和A'能构成一个DedekindCut分割, (A|A');<br>
+PS: 对于每个DedekindCut_High, (X||X'), 按照上述方法, 一定能构建出一个DedekindCut, (A|A');<br>
+接下来证明(A|A')要么是(X||X')上组最小元素, 要么是下组最大元素;<br>
+根据对称性, 我们只证明其中之一;<br>
+根据DedekindCut_High的定义, (A|A')应该落入X或者X'二者之一, 假设它落入了X中;<br>
+如果(A|A')不是X中的最大元素, 那么一定存在另一个DedekindCut, (B|B'), 且有"(B|B') &gt; (A|A')";<br>
+那么根据稠密性, "性质13", (A|A')与(B|B')之间, 存在有理数x, 且有"(A|A') &lt; x &lt; (B|B')";<br>
+因为"(A|A') &lt; x", 所以x在A'中;<font color="blue">[2]</font><br>
+因为"x &lt; (B|B')"且(B|B')在(X||X')的X中, 所以x在(X||X')的X集合中;<font color="blue">[3]</font><br>
+<font color="blue">[2]和[3], 与之前构造(A|A')的过程, 也就是[1]相矛盾</font>, 因为根据[1], X中的x元素, 应该在A中, 而不是在A'中;<br>
+因此(A|A')一定是X中最大的元素;<br>
+如果(A|A')落入了X'中, 同理, 它应该是其中最小元素;<br>
+因此对于任一DedekindCut_High, 不可能"上组无最小, 下组无最大".
+</p>
+
+<p style="line-height:1.5">
+将"上组无最小, 下组无最大"换一个说法, 就能得到"Dedekind完备定理", 我们将其作为DedekindCut的一个性质.<br>
+<font color="blue">"性质16 - Dedekind完备性": 对于DedekindCut系统内的任一分割(X||X'), 必然存在这么一个DedekindCut, (A|A'),
+且满足, 1)要么(A|A')是X中最大元素, 2)要么(A|A')是X'中最小元素.</font>
+"证明": 即"证明15".
+</p>
+
+<p style="line-height:1.5">
+"性质16"保证, 对DedekindCut系统再次进行"极限"的操作, 不会得到更新的数了;<br>
+即, 对于"极限"操作, DedekindCut系统是完备的.<br>
+</p>
+
+<p style="line-height:1.5">
+目前, 我们通过有理数系统, 定义出了DedekindCut系统, 它比有理数系统更加优秀;<br>
+DedekindCut系统拥有有理数系统的"有序性", "四则运算", 除此之外, 它还具有"完备性", 比有理数系统更加稠密.<br>
+接下来, 我们正式的定义实数, 或许你已经知道该怎么定义了:)<br>
+<font color="red">"定义17 - 实数": DedekindCut就是实数.</font><br>
+DedekindCut系统已经满足了我们对"实数"期望的所有要求, 直接将他当做实数系统就完成了.
+</p>
+
+<p style="line-height:1.5">
+至此, 我们在有理数系统上, 利用极限, 构造出了DedekindCut系统, 并将其转化为了我们期待的实数系统.<br>
+一些参考资料: "微积分学教程 - 序章", "数学分析八讲".
+</p>
+
+
+</body>
+</html>
