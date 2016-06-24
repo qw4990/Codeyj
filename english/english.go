@@ -13,9 +13,12 @@ const (
     _RES = "../res"
 
     _HTML_FORM = `<form action="" method="post">
+	<p>
     <textarea name="sentence" rows="3" cols="60">
-</textarea>
+</textarea></p>
+<p>
   <input type="submit" value="Submit" />
+  </p>
 </form>`
     _HTML_HEAD = `<html><head>
     <title>nyadb</title>
@@ -87,8 +90,14 @@ func initSentences() {
     }
 }
 
+func updateHandler(w http.ResponseWriter, r *http.Request) {
+	initSentences()
+	fmt.Fprint(w, "OK.")
+}
+
 func main() {
     initSentences()
+	http.HandleFunc("/update", updateHandler)
 	http.HandleFunc("/fucking", handler)
 	fmt.Println(http.ListenAndServe(":8080", nil))
 }
