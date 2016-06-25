@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
     "math/rand"
+	"time"
 )
 
 const (
@@ -64,6 +65,8 @@ func initSentences() {
     reader := bufio.NewReader(file)
 
     _SENTENCES_TOT = 0
+	_SENTENCES_CHINESE = make([]string, 0)
+	_SENTENCES_ENGLISH = make([]string, 0)
     eFlag := true
     for {
         line, err := reader.ReadString('\n')
@@ -88,6 +91,10 @@ func initSentences() {
         }
         eFlag = !eFlag
     }
+
+	seed := time.Now().UnixNano()
+	rand.Seed(seed)
+	_RAND_NUMBER = rand.Int()
 }
 
 func updateHandler(w http.ResponseWriter, r *http.Request) {
