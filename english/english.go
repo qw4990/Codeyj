@@ -94,7 +94,7 @@ func initSentences() {
 
 	seed := time.Now().UnixNano()
 	rand.Seed(seed)
-	_RAND_NUMBER = rand.Int()
+	_RAND_NUMBER = rand.Int() % _SENTENCES_TOT
 }
 
 func updateHandler(w http.ResponseWriter, r *http.Request) {
