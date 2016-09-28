@@ -1,0 +1,13 @@
+<html>
+
+<body>
+
+<h3>{{.result}}</h3>
+{{range $i, $word := .words}}
+    <a href="?word={{$word}}" style="text-decoration: none; color:black">{{$word}}</a>
+{{end}}
+<br>
+<a href="">another</a>
+
+</body>
+</html>

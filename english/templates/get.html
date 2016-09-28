@@ -1,0 +1,19 @@
+<html>
+
+<body>
+
+<form method="POST" action="">
+    <input type="hidden" name="id" value="{{.id}}"/>
+{{range $i, $word := .words}}
+    {{if .}}
+        <input type="hidden" name="word{{$i}}" value="{{$word}}" />
+        <a href="?word={{$word}}" style="text-decoration: none; color:black">{{$word}}</a>
+    {{else}}
+        <input type="text" name="word{{$i}}" style="width: 60px" />
+    {{end}}
+{{end}}
+    <input type="submit" name="submit" value="submit"/>
+</form>
+
+</body>
+</html>
